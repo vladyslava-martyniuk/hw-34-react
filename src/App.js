@@ -14,6 +14,8 @@ function App() {
   const contacts = useSelector((state) => state.contacts);
   const filter = useSelector((state) => state.filter);
 
+  
+
   const handleAddContact = ({ name, number }) => {
     const exists = contacts.some(
       (c) => c.name.toLowerCase() === name.toLowerCase()

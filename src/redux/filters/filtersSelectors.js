@@ -1,0 +1,1 @@
+ export const getVisibleContacts = (state) => state.contacts.contacts.filter((contact) => contact.name.toLowerCase().includes(state.filter.toLowerCase()));

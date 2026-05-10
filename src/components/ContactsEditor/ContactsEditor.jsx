@@ -1,7 +1,12 @@
 import { useState } from "react";
+import { addContacts } from "../../redux/contacts/contactsOperations";
+import { useDispatch } from "react-redux";
 
-export const ContactsEditor = ({ onSubmit }) => {
+export const ContactsEditor = () => {
   const [contact, setContact] = useState({ name: "", number: "" });
+
+  const dispatch = useDispatch();
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -10,7 +15,7 @@ export const ContactsEditor = ({ onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(contact);
+    dispatch(addContacts(contact));
     setContact({ name: "", number: "" });
   };
 

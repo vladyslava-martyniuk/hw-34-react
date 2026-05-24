@@ -8,13 +8,15 @@ import { use, useEffect } from "react";
 import { addContact, deleteContact } from "./redux/contacts/contactsSlice";
 import { setFilter } from "./redux/filters/filtersSlice";
 import { fetchContacts } from "./redux/contacts/contactsOperations";
+import { selectContacts, selectFilter } from "./redux/filters/filtersSelectors";
 
 
 function App() {
+ 
   const dispatch = useDispatch();
-
-   const contacts = useSelector((state) => state.contacts.contacts);
-   const filter = useSelector((state) => state.filter);
+  const contacts = useSelector(selectContacts);
+  const filter = useSelector(selectFilter);
+   
 
   useEffect(() => {
     dispatch(fetchContacts());

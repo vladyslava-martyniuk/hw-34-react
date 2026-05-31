@@ -8,7 +8,8 @@ import { use, useEffect } from "react";
 import { addContact, deleteContact } from "./redux/contacts/contactsSlice";
 import { setFilter } from "./redux/filters/filtersSlice";
 import { fetchContacts } from "./redux/contacts/contactsOperations";
-import { selectContacts, selectFilter } from "./redux/filters/filtersSelectors";
+import {selectFilter } from "./redux/filters/filtersSelectors";
+import { selectContacts } from "./redux/contacts/contactsSlice";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
   useEffect(() => {
     dispatch(fetchContacts());
   }, []);
+  console.log(contacts);
 
   
 

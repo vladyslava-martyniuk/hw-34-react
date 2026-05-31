@@ -1,30 +1,35 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice,  createEntityAdapter } from "@reduxjs/toolkit";
 import { addContacts, fetchContacts, deleteContacts } from "./contactsOperations";
-const initialState = {
-error: null,
-loading: false,
-contacts: [],
-};
 
+const contactsAdapter = createEntityAdapter();
 const contactsSlice = createSlice({
   name: "contacts",
-  initialState,
+  initialState: contactsAdapter.getInitialState({
+    loading: false,
+    error: null,
+  }),
  
   extraReducers: builder => {
     builder.addCase(fetchContacts.fulfilled, (state, action) => {
-      state.contacts = action.payload;
+      state.loading = false;
+      state.error = null;
+      contactsAdapter.setAll(state, action.payload);
     });
      builder.addCase(fetchContacts.pending, (state, action) => {
       state.loading = true;
     });
     builder.addCase(addContacts.fulfilled, (state, action) => {
-      state.contacts.push(action.payload);
+      contactsAdapter.addOne(state, action.payload);
     });
      builder.addCase(deleteContacts.fulfilled, (state, action) => {
-      state.contacts = state.contacts.filter(contact => contact.id !== action.payload.id);
+      contactsAdapter.removeOne(state, action.payload.id);
     });
   },
 
 });
-
+const contactsSelectors = contactsAdapter.getSelectors((state) => state.contacts);
+console.log(contactsSelectors);
+export const { selectAll: selectContacts } = contactsSelectors;
+export const { selectById: selectContactById } = contactsSelectors;
+export const { selectIds: selectContactIds } = contactsSelectors;
 export const contactsReducer = contactsSlice.reducer;

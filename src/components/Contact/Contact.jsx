@@ -6,7 +6,7 @@ const dispatch = useDispatch();
   const contact = useSelector((state) => selectContactById(state, id));
   return(
     <li >
-        {contact.name}: {contact.number}
+        {contact.name}: {contact.number} 
         <button onClick={() => dispatch(deleteContacts(id))}>Delete</button>
     </li>
   )

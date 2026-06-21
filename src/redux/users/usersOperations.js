@@ -17,3 +17,25 @@ export const registerUser = createAsyncThunk(
     }
   }
 );
+export const loginUser = createAsyncThunk(
+  "users/loginUser",
+  async ({ email, password }, thunkAPI) => {
+    try {
+      const response = await axios.post("login", {
+        email,
+        password,
+      });
+
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const logOutUser = createAsyncThunk(
+  "users/logOutUser",
+  async (_, thunkAPI) => {
+    localStorage.clear();
+    return null
+  }
+)

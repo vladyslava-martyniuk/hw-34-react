@@ -4,6 +4,11 @@
       "email": "vlada.martyniuk@gmail.com",
       "password": "$2a$10$p8HWVdYS8gjYRWeohocfZOp2L.5QbGB.4u9mhP3JqHf3wDuKRbEFi",
       "id": 1
+    },
+    {
+      "email": "vlada@gmail.com",
+      "password": "$2a$10$XygnELK/zYmwcneJHIMRL.xiN4DKwQasVk99f16nZAm71/olQ.5Vy",
+      "id": 2
     }
   ],
   "contacts": [
@@ -12,6 +17,18 @@
       "number": "2524664",
       "userId": 1,
       "id": 1
+    },
+    {
+      "name": "Drevo",
+      "number": "2524664",
+      "userId": 1,
+      "id": 2
+    },
+    {
+      "name": "test_api",
+      "number": "2524664",
+      "userId": 2,
+      "id": 3
     }
   ]
 }

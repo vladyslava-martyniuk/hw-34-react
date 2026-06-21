@@ -11,31 +11,37 @@ import { fetchContacts } from "./redux/contacts/contactsOperations";
 import {selectFilter } from "./redux/filters/filtersSelectors";
 import { selectContacts } from "./redux/contacts/contactsSlice";
 import { AuthForm } from "./components/AuthForm/AuthForm";
+import { LoginForm } from "./components/LoginForm/LoginForm";
+import { logOutUser } from "./redux/users/usersOperations";
 
 
 function App() {
  
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
-  const filter = useSelector(selectFilter);
+  const contacts = useSelector(selectContacts) || [];
+  const filter = useSelector(selectFilter) || "";
+  const isLoggedIn = useSelector((state) => state.users.isLoggedIn) || false;
    
 
   useEffect(() => {
     dispatch(fetchContacts());
-  }, []);
+  }, [isLoggedIn]);
   console.log(contacts);
+
 
   
 
   const filteredContacts = contacts.filter((contact) =>
     console.log(contact.name, filter),
-    contact.name.toLowerCase().includes(filter.toLowerCase())
+    // contact.name.toLowerCase().includes(filter.toLowerCase())
   );
 
   return (
     <div className="App">
       <h1>Phonebook</h1>
       <AuthForm />
+      <LoginForm />
+      <button type="button" onClick={() => dispatch(logOutUser())}>Logout</button>
       <ContactsEditor  />
 
       <h2>Contacts</h2>

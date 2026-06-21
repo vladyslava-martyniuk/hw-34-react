@@ -9,7 +9,7 @@ export const fetchContacts = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const state = thunkAPI.getState();
-      const fetchData = await axios.get(`/contacts`, {
+      const fetchData = await axios.get(`/contacts?userId=${state.users.user.id}`, {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${state.users.token}`
@@ -27,12 +27,13 @@ export const addContacts = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const state = thunkAPI.getState();
+      console.log({...payload, userId: state.users.user.id});
       const fetchData = await axios.post(`/contacts`, {...payload, userId: state.users.user.id}, {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${state.users.token}`
       }});
-
+console.log(fetchData);
       const data = fetchData.data; 
 console.log(data);
       return data;
@@ -55,7 +56,7 @@ export const deleteContacts = createAsyncThunk(
 
       const data = fetchData.data;
 console.log(data);
-      return data;
+      return payload;
     } catch (error) {}
   }
 );

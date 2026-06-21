@@ -20,10 +20,12 @@ const contactsSlice = createSlice({
       state.loading = true;
     });
     builder.addCase(addContacts.fulfilled, (state, action) => {
+      console.log(action);
       contactsAdapter.addOne(state, action.payload);
     });
      builder.addCase(deleteContacts.fulfilled, (state, action) => {
-      contactsAdapter.removeOne(state, action.payload.id);
+      console.log(action);
+      contactsAdapter.removeOne(state, action.payload);
     });
   },
 

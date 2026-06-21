@@ -21,6 +21,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "server": "json-server db.json -m ./node_modules/json-server-auth -r routes.json --port 3001",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",

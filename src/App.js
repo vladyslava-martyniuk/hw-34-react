@@ -10,6 +10,7 @@ import { setFilter } from "./redux/filters/filtersSlice";
 import { fetchContacts } from "./redux/contacts/contactsOperations";
 import {selectFilter } from "./redux/filters/filtersSelectors";
 import { selectContacts } from "./redux/contacts/contactsSlice";
+import { AuthForm } from "./components/AuthForm/AuthForm";
 
 
 function App() {
@@ -27,13 +28,14 @@ function App() {
   
 
   const filteredContacts = contacts.filter((contact) =>
+    console.log(contact.name, filter),
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
 
   return (
     <div className="App">
       <h1>Phonebook</h1>
-
+      <AuthForm />
       <ContactsEditor  />
 
       <h2>Contacts</h2>

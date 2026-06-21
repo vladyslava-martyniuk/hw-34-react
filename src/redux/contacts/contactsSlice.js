@@ -13,6 +13,7 @@ const contactsSlice = createSlice({
     builder.addCase(fetchContacts.fulfilled, (state, action) => {
       state.loading = false;
       state.error = null;
+      console.log(action);
       contactsAdapter.setAll(state, action.payload);
     });
      builder.addCase(fetchContacts.pending, (state, action) => {

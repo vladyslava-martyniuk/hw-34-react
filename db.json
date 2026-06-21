@@ -1,4 +1,17 @@
 {
-"users": [],
-"contacts": []
- }
+  "users": [
+    {
+      "email": "vlada.martyniuk@gmail.com",
+      "password": "$2a$10$p8HWVdYS8gjYRWeohocfZOp2L.5QbGB.4u9mhP3JqHf3wDuKRbEFi",
+      "id": 1
+    }
+  ],
+  "contacts": [
+    {
+      "name": "Владислава Мартинюк",
+      "number": "2524664",
+      "userId": 1,
+      "id": 1
+    }
+  ]
+}

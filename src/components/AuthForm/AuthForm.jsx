@@ -1,6 +1,5 @@
-import { Button } from "components/Button/Button";
 import { useDispatch } from "react-redux";
-import { registerUser } from "redux/users/usersOperations";
+import { registerUser } from "../../redux/users/usersOperations";
 
 export const AuthForm = () => {
   const dispatch = useDispatch();
@@ -23,7 +22,7 @@ export const AuthForm = () => {
         name="password"
         placeholder="Enter password here"
       />
-      <Button type="submit">Register</Button>
+      <button type="submit">Register</button>
     </form>
   );
 };
